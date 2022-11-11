@@ -1,6 +1,7 @@
 package com.example.BaiTap01.Service;
 
 import com.example.BaiTap01.model.Job;
+import com.example.BaiTap01.request.UpSertJobRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,6 +21,50 @@ public class JobService {
     public List<Job> getAllJob() {
         return jobs;
     }
+    public Job createJob(UpSertJobRequest request) {
+        String id = UUID.randomUUID().toString();
+        Job job = new Job(id,
+                request.getTitle()
+                , request.getDescription()
+                , request.getLocation()
+                , request.getMinSalary()
+                , request.getMaxSalary()
+                , request.getEmailTo());
+        jobs.add(job);
+        return job;
+    }
+
+    public Job updateJobById(String id, UpSertJobRequest request) {
+        for (Job job : jobs) {
+            if (job.getId().equals(id)) {
+                job.setDescription(request.getDescription());
+                job.setLocation(request.getLocation());
+                job.setMinSalary(request.getMinSalary());
+                job.setMaxSalary(request.getMaxSalary());
+                job.setEmailTo(request.getEmailTo());
+                return job;
+            }
+        }
+        return null;
+    }
+
+    public Job getJobById(String id, UpSertJobRequest request) {
+        for (Job job : jobs) {
+            if (job.getId().equals(id)) {
+                return job;
+            }
+        }
+        return null;
+    }
+
+    public void deleteJob(String id) {
+        for (Job job : jobs) {
+            if (job.getId().equals(id)) {
+                jobs.remove(job);
+            }
+        }
+    }
+
     public Job getJobByRandom(){
         int id = new Random().nextInt(jobs.size());
         return jobs.get(id);
