@@ -5,6 +5,8 @@ import com.example.BaiTap02.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 
 public class UserController {
@@ -17,7 +19,7 @@ public class UserController {
 //    }
 
     @PostMapping("login")
-    public String getUser(@RequestBody UserSertRequest request){
+    public String getUser(@Valid @RequestBody UserSertRequest request){
         return userService.getUser(request);
     }
 }

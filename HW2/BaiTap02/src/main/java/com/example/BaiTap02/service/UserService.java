@@ -19,7 +19,6 @@ public class UserService {
         if (userRepository.findByRequest(request).isEmpty()) throw new NotFoundException("username hoặc password sai");
         User user = userRepository.findByRequest(request).get();
         return "username: " + user.getUsername()
-                + "\n password: " + user.getPassword()
                 + "\n email: " + user.getEmail()
                 + "\n avatar: " + user.getAvatar();
     }
