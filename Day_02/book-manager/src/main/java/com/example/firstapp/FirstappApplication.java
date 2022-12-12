@@ -1,13 +1,13 @@
-package com.example.miniproject;
+package com.example.firstapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MiniProjectApplication {
+public class FirstappApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MiniProjectApplication.class, args);
+        SpringApplication.run(FirstappApplication.class, args);
     }
 
 }
