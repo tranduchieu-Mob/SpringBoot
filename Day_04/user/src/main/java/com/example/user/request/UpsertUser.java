@@ -12,9 +12,6 @@ import org.springframework.context.annotation.Primary;
 @Setter
 public class UpsertUser {
     private String name;
-    private String email;
     private String phone;
     private String address;
-    private String avatar;
-    private String password;
 }

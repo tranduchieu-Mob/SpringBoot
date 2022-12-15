@@ -10,12 +10,12 @@ public class BmiController {
     @Autowired
     private BmiService bmiService;
 
-    @GetMapping("/bmi-get")
+    @GetMapping("/bmi")
     public double calculateBmiGet(@RequestParam double height, @RequestParam double weight) {
         return bmiService.calculateBmi(height, weight);
     }
 
-    @PostMapping("/bmi-post")
+    @PostMapping("/bmi")
     public double calculateBmiPost(@RequestBody BmiRequest request) {
         return bmiService.calculateBmi(request.getHeight(), request.getWeight());
     }
