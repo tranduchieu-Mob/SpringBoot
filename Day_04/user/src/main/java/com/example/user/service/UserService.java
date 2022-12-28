@@ -7,6 +7,7 @@ import com.example.user.exception.NotFoundException;
 import com.example.user.model.User;
 import com.example.user.repository.UserRepository;
 import com.example.user.request.CreateUserRequest;
+import com.example.user.request.UpdateAvatarRequest;
 import com.example.user.request.UpsertPasswordRequest;
 import com.example.user.request.UpsertUser;
 import lombok.RequiredArgsConstructor;
@@ -260,5 +261,13 @@ public class UserService {
         });
 
         fileService.deleteFile(id, fileId);
+    }
+
+    public void updateAvatar(int id, UpdateAvatarRequest request) {
+        User user = userRepository.findById(id).orElseThrow(() -> {
+            throw new NotFoundException("Not found user with id = " + id);
+        });
+
+        user.setAvatar(request.getAvatar());
     }
 }

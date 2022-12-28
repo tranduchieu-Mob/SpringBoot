@@ -52,7 +52,7 @@ public class FileService {
         }catch (IOException e) {
             throw new RuntimeException("Lỗi trong quá trình upload file");
         }
-        return "/api/v1/users" + id + "/files/" + fileId;
+        return "/api/v1/users/" + id + "/files/" + fileId;
     }
 
     private void validateFile(MultipartFile file){
@@ -115,7 +115,7 @@ public class FileService {
         return Arrays.stream(files)
                 .map(file -> file.getName())
                 .sorted(Comparator.reverseOrder())
-                .map(fileName -> "/api/v1/users" + id + "/files/" + fileName)
+                .map(fileName -> "/api/v1/users/" + id + "/files/" + fileName)
                 .collect(Collectors.toList());
     }
 

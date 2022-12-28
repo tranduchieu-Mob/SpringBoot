@@ -22,7 +22,7 @@ public class TodoService {
     public TodoService(){
         todos = new ArrayList<>();
         todos.add(new Todo(1,"Đi chơi", true));
-        todos.add(new Todo(2,"Làm bài tậo", false));
+        todos.add(new Todo(2,"Làm bài tập", false));
         todos.add(new Todo(3, "Đá bóng", true));
     }
 

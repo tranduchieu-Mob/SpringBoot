@@ -4,6 +4,7 @@ import com.example.user.dto.UserDetailDTO;
 import com.example.user.model.Page;
 import com.example.user.model.User;
 import com.example.user.request.CreateUserRequest;
+import com.example.user.request.UpdateAvatarRequest;
 import com.example.user.request.UpsertPasswordRequest;
 import com.example.user.request.UpsertUser;
 import com.example.user.service.UserService;
@@ -158,7 +159,7 @@ public class UserControlller {
     }
 
     //xem ảnh
-    @GetMapping("users/{id}/files/{fileID}")
+    @GetMapping("users/{id}/files/{fileId}")
     public ResponseEntity<?> readFile(@PathVariable int id, @PathVariable String fileId) {
         byte[] bytes = userService.readFile(id, fileId);
         return ResponseEntity.ok()
@@ -174,9 +175,16 @@ public class UserControlller {
     }
 
     //Xóa ảnh
-    @DeleteMapping("users/{id}/files/{fileID}")
+    @DeleteMapping("users/{id}/files/{fileId}")
     public ResponseEntity<?> deleteFile(@PathVariable int id, @PathVariable String fileId) {
         userService.deleteFile(id, fileId);
+        return ResponseEntity.noContent().build();//204
+    }
+
+    //Thay ổi avatar của user
+    @PutMapping("users/{id}/update-avatar")
+    public ResponseEntity<?> updateAvatar(@PathVariable int id, @RequestBody UpdateAvatarRequest request) {
+        userService.updateAvatar(id, request);
         return ResponseEntity.noContent().build();//204
     }
 }
